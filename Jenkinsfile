@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Stage 1') {
       steps {
-        sh 'echo "Hello $BUILD_NUMBER from $DEMO"'
+        sh 'echo "I am here $BUILD_NUMBER"'
       }
     }
 
