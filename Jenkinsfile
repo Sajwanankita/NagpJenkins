@@ -20,7 +20,12 @@ pipeline {
 	}
         stage('Build') { 
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+		    
+		sh '''
+		echo "PATH = ${PATH}"
+		echo "M2_HOME = ${M2_HOME}"
+		'''
+
             }
         }
     }
