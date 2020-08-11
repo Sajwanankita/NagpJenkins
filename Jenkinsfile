@@ -1,11 +1,5 @@
 pipeline {
     agent any
-    tools{
-	maven 'Maven'
-	jdk 'JDK'
-    }
-  
-
     stages {
 	stage('clean') { 
 		steps {
@@ -19,13 +13,11 @@ pipeline {
 		}
 	}
         stage('Build') { 
-            steps {
-		    
+            steps { 
 		sh '''
 		echo "PATH = ${PATH}"
 		echo "M2_HOME = ${M2_HOME}"
 		'''
-
             }
         }
     }
