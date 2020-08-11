@@ -1,14 +1,22 @@
 pipeline {
-  agent any
-  stages {
-    stage('Stage 1') {
-      steps {
-        echo 'Hye I am here'
-      }
-    }
+    agent any
+  
+		stage('clean') { 
+			steps {
+				deleteDir()
+			}
+		}
 
-  }
-  environment {
-    DEMO = '1'
-  }
+		stage('checkout') {
+			steps {
+				checkout scm
+			}
+		}
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'mvn -B -DskipTests clean package' 
+            }
+        }
+    }
 }
