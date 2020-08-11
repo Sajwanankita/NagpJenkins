@@ -39,7 +39,7 @@ pipeline {
 stage ('Upload file') {
             steps {
                 rtUpload (
-                    serverId: nagp_server, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                    serverId: 'nagp_server', // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
                     spec: """{
                             "files": [
                                     {
@@ -55,7 +55,7 @@ stage ('Upload file') {
         stage ('Publish build info') {
             steps {
                 rtPublishBuildInfo (
-                    serverId: nagp_server
+                    serverId: 'nagp_server'
                 )
             }
         }
