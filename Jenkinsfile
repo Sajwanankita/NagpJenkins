@@ -83,7 +83,7 @@ stage ('Upload file') {
 	    
          stage ('Docker Image') {
             steps {
-                bat '/bin/docker build -t demo --no-cache -f Dockerfile .' 
+                bat 'docker build -t demo --no-cache -f Dockerfile .' 
             }
         }
 	    
