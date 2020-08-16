@@ -80,5 +80,13 @@ stage ('Upload file') {
                 )
             }
         }
+	    
+         stage ('Docker Image') {
+            steps {
+                bat '/bin/docker build -t demo --no-cache -f Dockerfile .' 
+            }
+        }
+	    
+	    
     }
 }
