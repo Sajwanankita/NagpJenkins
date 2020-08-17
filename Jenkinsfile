@@ -102,11 +102,10 @@ stage ('Upload file') {
 	    stage ('Start container') {
             steps {
                bat '''
-  		  ContainerId= $(docker ps | grep 8080 | cut -d "" -f 1)
-    	          if [ ContainerId ]
-		  then 
-		  	docker stop ContainerId
-			docker rm -f ContainerId
+  		  set ContainerId= $(docker ps | grep 8080 | cut -d "" -f 1)
+    	          if %variable%  
+		  	docker stop %ContainerId%
+			docker rm -f %ContainerId%
  		 '''
             }
         }
