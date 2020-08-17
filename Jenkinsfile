@@ -87,7 +87,7 @@ stage ('Upload file') {
 	    
          stage ('Docker Image') {
             steps {
-		    bat 'docker build -t sajwanankita/jenkins_demo:${BUILD_NUMBER} --no-cache -f Dockerfile .' 
+		    bat 'docker build -t sajwanankita/jenkins_demo:1.0 --no-cache -f Dockerfile .' 
             }
         }
 	    
