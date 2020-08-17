@@ -99,7 +99,7 @@ stage ('Upload file') {
             }
         }
 	    
-	    stage ('Docker push') {
+	    stage ('Start container') {
             steps {
                bat '''
   		  ContainerId= $(docker ps | grep 8080 | cut -d "" -f 1)
