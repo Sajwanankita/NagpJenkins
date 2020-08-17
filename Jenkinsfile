@@ -23,7 +23,7 @@ pipeline {
                bat '''
   		  docker ps
 		  set name = 'hello'
-		  docker ps -qf "name=$name"
+		  $(docker ps -qf "name=$name")
  		 '''
             }
         }
