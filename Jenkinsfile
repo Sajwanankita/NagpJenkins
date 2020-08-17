@@ -24,7 +24,7 @@ pipeline {
   		  docker ps
 		  set name=hello
 		 echo %name%
-		 set id=%docker ps -qf "name=%name%")%
+		 set id=%(docker ps -qf "name=hello")%
 		 echo %id%
  		 '''
             }
