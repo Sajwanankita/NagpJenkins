@@ -22,9 +22,10 @@ pipeline {
             steps {
                bat '''
   		  docker ps
-		  set name = 'hello'
-		echo  %name%
-		  %%(docker ps -qf "name=%%name")
+		  set name='hello'
+		 echo %name%
+		 set id=%(docker ps -qf "name=%name%")%
+		 echo %id%
  		 '''
             }
         }
