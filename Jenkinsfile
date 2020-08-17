@@ -102,10 +102,12 @@ stage ('Upload file') {
 	    stage ('Start container') {
             steps {
                bat '''
-  		  set ContainerId= $(docker ps | grep 8080 | cut -d "" -f 1)
-    	          if %variable%  
+  		  set ContainerId= $(docker ps -qf "name='demo_jenkins'")
+    	          if %ContainerId%  
 		  	docker stop %ContainerId%
 			docker rm -f %ContainerId%
+		else
+			docker run --name 'demo_jenkins' -p "8080:8080" sajwanankita/jenkins_demo:1.0
  		 '''
             }
         }
