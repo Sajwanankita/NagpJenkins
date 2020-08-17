@@ -94,7 +94,7 @@ stage ('Upload file') {
 	 stage ('Docker push') {
             steps {
                 withDockerRegistry([ credentialsId: "dockerId", url: "" ]) {
-          	sh 'docker push sajwanankita/jenkins_demo'
+          	sh 'docker push sajwanankita/jenkins_demo:1.0'
         	}
             }
         }
