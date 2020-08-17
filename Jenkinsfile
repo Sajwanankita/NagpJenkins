@@ -87,14 +87,14 @@ stage ('Upload file') {
 	    
          stage ('Docker Image') {
             steps {
-                bat 'docker build -t demo --no-cache -f Dockerfile .' 
+		    bat 'docker build -t sajwanankita/jenkins_demo:${env.BUILD_NUMBER} --no-cache -f Dockerfile .' 
             }
         }
 	    
 	 stage ('Docker push') {
             steps {
                 withDockerRegistry([ credentialsId: "dockerId", url: "" ]) {
-          	sh 'docker push sajwanankita/jenkins_demo:1.1.0'
+          	sh 'docker push sajwanankita/jenkins_demo'
         	}
             }
         }
