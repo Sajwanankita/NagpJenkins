@@ -1,4 +1,8 @@
 pipeline {
+	environment {
+   		 registry = "sajwanankita/jenkins_demo"
+    		registryCredential = 'dockerId'
+	}
     agent any
     tools { 
         maven 'Maven' 
@@ -89,7 +93,7 @@ stage ('Upload file') {
 	    
 	 stage ('Docker push') {
             steps {
-                withDockerRegistry([ credentialsId: "ff92b74f-4dad-44a9-95f9-4f7aefa02100", url: "" ]) {
+                withDockerRegistry([ credentialsId: "dockerId", url: "" ]) {
           	sh 'docker push sajwanankita/jenkins_demo:1.1.0'
         	}
             }
