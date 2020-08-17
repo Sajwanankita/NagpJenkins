@@ -85,13 +85,6 @@ stage ('Upload file') {
             steps {
                 bat 'docker build -t demo --no-cache -f Dockerfile .' 
             }
-		 
-	 steps {
-	        withDockerRegistry([ credentialsId: "ff92b74f-4dad-44a9-95f9-4f7aefa02100", url: "" ]) {
-                   bat 'docker push demo"
-                }
-                }
-         
         }
 	    
 	    
