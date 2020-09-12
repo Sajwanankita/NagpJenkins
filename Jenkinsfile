@@ -99,7 +99,7 @@ stage ('Upload file') {
             }
         }
 	    
-	    stage ('Docker push') {
+	    stage ('Docker push 2') {
             steps {
                bat '''
   		  FOR /F "tokens=* USEBACKQ" %%F IN (`docker ps -qf name^=hello_world`) DO (
