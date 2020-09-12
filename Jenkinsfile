@@ -41,6 +41,10 @@ pipeline {
                bat '''
   		  FOR /F "tokens=* USEBACKQ" %%F IN (`docker ps -qf name^=hello_world`) DO (
                         SET ContainerID=%%F
+			ECHO %%F
+			ECHO %ContainerID%
+			ECHO %%ContainerID
+			
                     )
 		    ECHO %ContainerID%
 		    
