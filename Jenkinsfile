@@ -5,7 +5,7 @@ pipeline {
 	}
     agent any
     tools { 
-        maven 'Maven' 
+        maven 'Maven3' 
         jdk 'JDK' 
     }
     stages {
@@ -73,7 +73,7 @@ pipeline {
 	stage("build & SonarQube analysis") {
             agent any
             steps {
-                withSonarQubeEnv('sonarqube') {
+                withSonarQubeEnv('Test_Sonar') {
                 bat 'mvn clean package sonar:sonar'
                 }
             }
@@ -81,7 +81,7 @@ pipeline {
 stage ('Upload file') {
             steps {
                 rtUpload (
-                    serverId: 'nagp_server', // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                    serverId: '123456789@artifactory', // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
                     spec: """{
                             "files": [
                                     {
@@ -97,7 +97,7 @@ stage ('Upload file') {
         stage ('Publish build info') {
             steps {
                 rtPublishBuildInfo (
-                    serverId: 'nagp_server'
+                    serverId: '123456789@artifactory'
                 )
             }
         }
@@ -157,11 +157,6 @@ stage ('Upload file') {
  		 '''
             }
         }
-	    
-	    
-    }
-}
-
 	    
 	    
     }
