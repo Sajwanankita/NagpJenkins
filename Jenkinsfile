@@ -102,11 +102,16 @@ stage ('Upload file') {
 	    stage ('Docker push') {
             steps {
                bat '''
-  		  ContainerId= $(docker ps | grep 8080 | cut -d "" -f 1)
-    	          if [ ContainerId ]
-		  then 
-		  	docker stop ContainerId
-			docker rm -f ContainerId
+  		  FOR /F "tokens=* USEBACKQ" %%F IN (`docker ps -qf name^=hello_world`) DO (
+                        SET ContainerID=%%F
+                    )
+					
+			IF [%ContainerID] EQU []  (
+			   docker run -d --name hello_world sajwanankita/jenkins_demo:1.0
+			) ELSE (
+				docker restart ContainerID
+			)
+		  
  		 '''
             }
         }
