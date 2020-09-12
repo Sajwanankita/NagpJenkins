@@ -32,44 +32,6 @@ pipeline {
                 }
             }
         }
-	
-
-     
-	    
-pipeline {
-	environment {
-   		 registry = "sajwanankita/jenkins_demo"
-    		registryCredential = 'dockerId'
-	}
-    agent any
-    tools { 
-        maven 'Maven3' 
-        jdk 'JDK' 
-    }
-    stages {
-	    
-	    
-	stage('clean') { 
-		steps {
-			deleteDir()
-		}
-	}
-
-	stage('checkout') {
-		steps {
-			checkout scm
-		}
-	}
-        stage ('Build') {
-            steps {
-                bat 'mvn -Dmaven.test.failure.ignore=true install' 
-            }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
-        }
 	stage("build & SonarQube analysis") {
             agent any
             steps {
@@ -157,11 +119,6 @@ stage ('Upload file') {
  		 '''
             }
         }
-	    
-	    
-    }
-}
-
 	    
 	    
     }
