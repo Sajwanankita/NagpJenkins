@@ -43,7 +43,7 @@ pipeline {
 	}
     agent any
     tools { 
-        maven 'Maven' 
+        maven 'Maven3' 
         jdk 'JDK' 
     }
     stages {
@@ -81,7 +81,7 @@ pipeline {
 stage ('Upload file') {
             steps {
                 rtUpload (
-                    serverId: '123456789@artifactory', // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                    serverId: '123456789@artifactory', 
                     spec: """{
                             "files": [
                                     {
@@ -157,6 +157,11 @@ stage ('Upload file') {
  		 '''
             }
         }
+	    
+	    
+    }
+}
+
 	    
 	    
     }
