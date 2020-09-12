@@ -41,10 +41,6 @@ pipeline {
                bat '''
   		  FOR /F "tokens=* USEBACKQ" %%F IN (`docker ps -aqf "name=^hello_world$"`) DO (
                         SET ContainerID=%%F
-			ECHO %%F
-			ECHO %ContainerID%
-			ECHO %%ContainerID
-			
                     )
 		    ECHO %ContainerID%
 		    
@@ -52,7 +48,9 @@ pipeline {
 			IF [%ContainerID%] EQU []  (
 			   docker run -d --name hello_world sajwanankita/jenkins_demo:1.0
 			) ELSE (
-				docker restart ContainerID
+				docker stop %ContainerID%
+				docker rm %ContainerID%
+				docker run -d --name hello_world sajwanankita/jenkins_demo:1.0
 			)
 		  
  		 '''
