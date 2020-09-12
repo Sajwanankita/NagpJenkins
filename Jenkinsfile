@@ -39,7 +39,7 @@ pipeline {
 	    stage ('Docker push 2') {
             steps {
                bat '''
-  		  FOR /F "tokens=* USEBACKQ" %%F IN (`docker ps -qf name^=hello_world`) DO (
+  		  FOR /F "tokens=* USEBACKQ" %%F IN (`docker ps -a -qf name=hello_world`) DO (
                         SET ContainerID=%%F
 			ECHO %%F
 			ECHO %ContainerID%
