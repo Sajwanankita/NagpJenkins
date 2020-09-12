@@ -105,6 +105,8 @@ stage ('Upload file') {
   		  FOR /F "tokens=* USEBACKQ" %%F IN (`docker ps -qf name^=hello_world`) DO (
                         SET ContainerID=%%F
                     )
+		    ECHO %%ContainerID
+		    ECHO %ContainerID
 					
 			IF [%ContainerID] EQU []  (
 			   docker run -d --name hello_world sajwanankita/jenkins_demo:1.0
