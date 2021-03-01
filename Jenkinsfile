@@ -48,7 +48,7 @@ stage ('Upload file') {
                             "files": [
                                     {
                                         "pattern": "**/*.jar",
-                                        "target": "nagp_demo_snapshot"
+                                        "target": "dmeo"
                                     }
                                 ]
                             }"""
